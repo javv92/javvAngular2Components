@@ -1,0 +1,5 @@
+<md-select placeholder=" " [(ngModel)]="selectedType" (ngModelChange)="onChangeSelectdDocumetType(value)" [disabled]="isDisabled">
+  <md-option *ngFor="let type of types" [value]="type">
+    {{ type.shortDescription }}
+  </md-option>
+</md-select>

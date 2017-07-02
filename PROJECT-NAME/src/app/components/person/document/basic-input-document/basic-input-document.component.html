@@ -1,3 +1,17 @@
-<md-input-container class="example-full-width">
-  <input mdInput placeholder="{{palceholder}}">
-</md-input-container>
+<div>
+  <app-type-document-selector
+      [(ngModel)]="document.documentType"
+      (ngModelChange) = "onChangeDocumentType($event)"
+      [disabled] = "isDisabled">
+  </app-type-document-selector>
+  <md-input-container>
+    <input mdInput
+          [(ngModel)]="document.documentNumber"
+          placeholder="{{palceholder}}"
+          (ngModelChange)="onChangeDocumentNumber($event)"
+          [pattern]="document?(document.documentType?document.documentType.pattern:''):''"
+          [maxlength]="document?(document.documentType?document.documentType._length:0):''"
+          [disabled]="!document.documentType||isDisabled">
+  </md-input-container>
+</div>
+<pre>{{document?.documentType?.description}} - {{document?.documentNumber}}</pre>
